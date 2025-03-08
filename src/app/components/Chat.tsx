@@ -14,7 +14,7 @@ interface Message {
   }
   
   function Chat() {
-    const [messages, setMessages] = useState<Message[]>([]);  // 型定義
+    const [messages, setMessages] = useState<Message[]>([]);  
   
     useEffect(() => {
       const messagesRef = collection(db, 'messages');
@@ -23,7 +23,7 @@ interface Message {
         setMessages(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as Message)));
       });
   
-      return () => unsubscribe();  // クリーンアップ: リアルタイム更新解除
+      return () => unsubscribe();  
     }, []);
   
     return (
@@ -31,7 +31,7 @@ interface Message {
         <SignOut />
         <div className="msgs">
           {messages.map(({ id, text, photoURL, uid }) => (
-            <div key={id}  // key を直接設定
+            <div key={id}  
               className={`msg ${uid === auth.currentUser?.uid ? 'sent' : 'received'}`}>
               <img src={photoURL} alt="" />
               <p>{text}</p>

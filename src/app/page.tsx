@@ -12,11 +12,11 @@ const App: React.FC = () => {
   const [user, loading, error] = useAuthState(auth);
 
   if (loading) {
-    return <div>Loading...</div>;  // ローディング中の処理
+    return <div>Loading...</div>;  
   }
 
   if (error) {
-    return <div>Error: {error.message}</div>;  // エラー処理
+    return <div>Error: {error.message}</div>; 
   }
   
   
